@@ -2,7 +2,7 @@
   "id": "FEAT-001",
   "type": "feat",
   "description": "Add system prompt configuration, multi-session support, and token tracking to the Bellows Direct Chat. This is one cohesive feature that transforms the single-session provider into a full multi-session LLM client with system prompt and token usage display.",
-  "status": "in_progress",
+  "status": "completed",
   "steps": [
     "1. Add new storage keys to lib/storage-keys.ts: BELLOWS_CHAT_SESSIONS_STORAGE_KEY (for session list+messages), BELLOWS_CHAT_SYSTEM_PROMPT_STORAGE_KEY (for global system prompt), BELLOWS_CHAT_ACTIVE_SESSION_STORAGE_KEY (for active session ID).",
     "2. Rewrite providers/bellows-chat-provider.tsx to support multi-session architecture: Define a Session type {id: string, title: string, messages: BellowsChatMessage[], tokenUsage: {promptTokens: number, completionTokens: number, totalTokens: number}}. State: sessions[], activeSessionId, systemPrompt. Persist all to AsyncStorage. The sendMessage function prepends the system prompt as {role:'system',content:systemPrompt} to the messages array sent to bellowsChatCompletion (but does NOT add it to the visible messages list). After receiving a response, extract usage from the response and attach it to the assistant message metadata. Expose: sessions, activeSession (messages, title, tokenUsage), createSession, switchSession, deleteSession (clear current = delete active and create new empty), systemPrompt, setSystemPrompt, sendMessage, loading, error, models, selectedModel, setSelectedModel. Each assistant message needs tokenUsage attached for per-message display.",
@@ -27,5 +27,5 @@
     "cd /projects/sandbox/ANVIL-CLIENT && npm run lint"
   ],
   "blocked_reason": null,
-  "findings": ""
+  "findings": "All acceptance criteria met. typecheck and lint pass cleanly. Used BellowsDisplayMessage extended type with optional tokenUsage field. Portal+Modal from react-native-paper used for system prompt. Session chips use horizontal ScrollView. Migration handles legacy BELLOWS_CHAT_MESSAGES_STORAGE_KEY data."
 }
