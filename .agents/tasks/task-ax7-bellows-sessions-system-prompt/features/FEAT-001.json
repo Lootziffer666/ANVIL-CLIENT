@@ -1,0 +1,31 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Add system prompt configuration, multi-session support, and token tracking to the Bellows Direct Chat. This is one cohesive feature that transforms the single-session provider into a full multi-session LLM client with system prompt and token usage display.",
+  "status": "in_progress",
+  "steps": [
+    "1. Add new storage keys to lib/storage-keys.ts: BELLOWS_CHAT_SESSIONS_STORAGE_KEY (for session list+messages), BELLOWS_CHAT_SYSTEM_PROMPT_STORAGE_KEY (for global system prompt), BELLOWS_CHAT_ACTIVE_SESSION_STORAGE_KEY (for active session ID).",
+    "2. Rewrite providers/bellows-chat-provider.tsx to support multi-session architecture: Define a Session type {id: string, title: string, messages: BellowsChatMessage[], tokenUsage: {promptTokens: number, completionTokens: number, totalTokens: number}}. State: sessions[], activeSessionId, systemPrompt. Persist all to AsyncStorage. The sendMessage function prepends the system prompt as {role:'system',content:systemPrompt} to the messages array sent to bellowsChatCompletion (but does NOT add it to the visible messages list). After receiving a response, extract usage from the response and attach it to the assistant message metadata. Expose: sessions, activeSession (messages, title, tokenUsage), createSession, switchSession, deleteSession (clear current = delete active and create new empty), systemPrompt, setSystemPrompt, sendMessage, loading, error, models, selectedModel, setSelectedModel. Each assistant message needs tokenUsage attached for per-message display.",
+    "3. Update the BellowsChatMessage type usage: create a local extended type (e.g. BellowsDisplayMessage) that adds an optional tokenUsage field {prompt_tokens, completion_tokens, total_tokens} to track per-message token usage for display purposes. The provider stores these extended messages internally.",
+    "4. Update app/(tabs)/bellows-chat.tsx toolbar: (a) Add a 'plus' IconButton for 'New Chat' that calls createSession. (b) Add a 'tune' IconButton that opens a Modal for editing the system prompt (TextInput multiline, save/cancel buttons). (c) Add a horizontal ScrollView chip selector below the toolbar showing session titles as chips, with the active one highlighted (using palette.tint). Tapping a chip calls switchSession. (d) Replace the delete button behavior to only clear the current session (deleteSession). (e) Show cumulative session token total in the toolbar (small text like 'Sigma 470' using palette.muted).",
+    "5. Update the MessageBubble component in app/(tabs)/bellows-chat.tsx: For assistant messages that have tokenUsage, render a small line below the bubble showing token info formatted as 'up-arrow{prompt_tokens} down-arrow{completion_tokens} Sigma{total_tokens}' in palette.muted color, fontSize 11.",
+    "6. Ensure backward compatibility: On first load, if the old BELLOWS_CHAT_MESSAGES_STORAGE_KEY has data, migrate it into a single session in the new format, then remove the old key."
+  ],
+  "acceptance_criteria": [
+    "npm run typecheck passes with no errors",
+    "npm run lint passes with no errors",
+    "The provider exposes multi-session API (sessions, activeSession, createSession, switchSession, deleteSession)",
+    "System prompt is persisted in AsyncStorage and prepended to API calls but not shown in message list",
+    "Token usage from bellowsChatCompletion response is displayed under assistant bubbles",
+    "Cumulative session tokens shown in toolbar",
+    "Session switcher UI renders as horizontal chips",
+    "New Chat button creates empty session",
+    "System prompt modal accessible from toolbar icon"
+  ],
+  "verification": [
+    "cd /projects/sandbox/ANVIL-CLIENT && npm run typecheck",
+    "cd /projects/sandbox/ANVIL-CLIENT && npm run lint"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

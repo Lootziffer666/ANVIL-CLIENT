@@ -4,3 +4,6 @@ export const ACTIVE_PROJECT_STORAGE_KEY = 'opencode-mobile.active-project';
 export const LAST_SESSION_BY_PROJECT_STORAGE_KEY = 'opencode-mobile.last-session-by-project';
 export const PENDING_NOTIFICATION_SESSIONS_STORAGE_KEY = 'opencode-mobile.pending-notification-sessions';
 export const BELLOWS_CHAT_MESSAGES_STORAGE_KEY = 'opencode-mobile.bellows-chat-messages';
+export const BELLOWS_CHAT_SESSIONS_STORAGE_KEY = 'opencode-mobile.bellows-chat-sessions';
+export const BELLOWS_CHAT_SYSTEM_PROMPT_STORAGE_KEY = 'opencode-mobile.bellows-chat-system-prompt';
+export const BELLOWS_CHAT_ACTIVE_SESSION_STORAGE_KEY = 'opencode-mobile.bellows-chat-active-session';
