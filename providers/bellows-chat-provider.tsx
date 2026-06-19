@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 
 import {
   type BellowsChatMessage,
@@ -40,6 +40,10 @@ export function BellowsChatProvider({ children }: { children: React.ReactNode })
   const [models, setModels] = useState<BellowsModel[]>([]);
   const [selectedModel, setSelectedModel] = useState('gpt-4o');
 
+  // Keep a ref to the latest messages so sendMessage never captures a stale snapshot
+  const messagesRef = useRef(messages);
+  messagesRef.current = messages;
+
   // Fetch available models on mount
   useEffect(() => {
     let cancelled = false;
@@ -61,7 +65,7 @@ export function BellowsChatProvider({ children }: { children: React.ReactNode })
 
   const sendMessage = useCallback(async (text: string) => {
     const userMessage: BellowsChatMessage = { role: 'user', content: text };
-    const updatedMessages = [...messages, userMessage];
+    const updatedMessages = [...messagesRef.current, userMessage];
     setMessages(updatedMessages);
     setLoading(true);
     setError(null);
@@ -82,7 +86,7 @@ export function BellowsChatProvider({ children }: { children: React.ReactNode })
     } finally {
       setLoading(false);
     }
-  }, [messages, selectedModel]);
+  }, [selectedModel]);
 
   const clearMessages = useCallback(() => {
     setMessages([]);
