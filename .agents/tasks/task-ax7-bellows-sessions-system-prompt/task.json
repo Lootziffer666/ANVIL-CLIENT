@@ -1,0 +1,7 @@
+{
+  "task_id": "task-ax7-bellows-sessions-system-prompt",
+  "task_description": "Extend Bellows Direct Chat with system prompt configuration, multi-session support, and per-message token tracking to make it a full-featured LLM client",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001"],
+  "blocked_reason": null
+}

@@ -1,0 +1,23 @@
+{
+  "project_type": "Expo React Native mobile app (LLM chat client)",
+  "language": "TypeScript / React Native",
+  "build_system": "Expo with npm, no native build in sandbox",
+  "test_framework": "Playwright e2e flows + fake OpenCode server; no unit tests",
+  "build_command": "npm run typecheck",
+  "test_command": "npm run lint && npm run typecheck",
+  "verification_instructions": "Run npm run lint && npm run typecheck to confirm no regressions. The e2e tests require a running server and web build so typecheck is the primary gate in sandbox.",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "npm install (already done, node_modules present)",
+  "environment_constraints": "No native build tools (Android/Xcode). Validation is lint + typecheck only. No Docker daemon.",
+  "contribution_requirements": "Follow AGENTS.md layer rules: providers own domain state, components own presentation, lib owns protocol/storage. Keep screens thin. Run lint + typecheck as baseline validation.",
+  "key_patterns": "BellowsChatProvider pattern: createContext + Provider component + useBellowsChat hook. AsyncStorage for persistence. react-native-paper for UI (IconButton, Surface, Text, Menu, TextInput, Modal). Colors from constants/theme.ts. BELLOWS_CHAT_MESSAGES_STORAGE_KEY in lib/storage-keys.ts. bellowsChatCompletion returns usage field.",
+  "relevant_files": [
+    "providers/bellows-chat-provider.tsx",
+    "app/(tabs)/bellows-chat.tsx",
+    "lib/bellows/client.ts",
+    "lib/storage-keys.ts",
+    "constants/theme.ts",
+    "components/chat/chat-markdown.tsx"
+  ],
+  "directory_structure": "app/(tabs)/ = route screens, providers/ = domain state, components/chat/ = chat UI, lib/ = protocol/storage/helpers, constants/ = theme"
+}
