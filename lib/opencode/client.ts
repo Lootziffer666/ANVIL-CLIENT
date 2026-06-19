@@ -28,6 +28,8 @@ export type OpencodeConnectionSettings = {
   username: string;
   password: string;
   directory: string;
+  bellowsServerUrl?: string;
+  bellowsApiKey?: string;
 };
 
 export const defaultConnectionSettings: OpencodeConnectionSettings = {
@@ -35,6 +37,8 @@ export const defaultConnectionSettings: OpencodeConnectionSettings = {
   username: '',
   password: '',
   directory: '',
+  bellowsServerUrl: 'http://127.0.0.1:4000',
+  bellowsApiKey: 'sk-anvil-safe-key',
 };
 
 type NormalizedServerUrl = {
