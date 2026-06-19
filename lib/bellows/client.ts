@@ -146,11 +146,25 @@ export async function bellowsAddModel(
 
 /**
  * GET /budget/info - Retrieve budget usage information
+ *
+ * Normalizes the response shape to handle LiteLLM version differences.
+ * Some versions nest data under `info`, `budget_info`, or return fields at root level.
  */
 export async function bellowsBudgetInfo(
   settings: BellowsConnectionSettings,
 ): Promise<BellowsBudgetInfo> {
-  return bellowsRequest<BellowsBudgetInfo>(settings, '/budget/info');
+  const response = await bellowsRequest<Record<string, unknown>>(settings, '/budget/info');
+
+  // Normalize: LiteLLM may nest budget data under different keys
+  const data = (response as Record<string, unknown>).info
+    ?? (response as Record<string, unknown>).budget_info
+    ?? response;
+
+  const record = data as Record<string, unknown>;
+  return {
+    current_spend: typeof record.current_spend === 'number' ? record.current_spend : 0,
+    max_budget: typeof record.max_budget === 'number' ? record.max_budget : null,
+  };
 }
 
 /**

@@ -1,4 +1,4 @@
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, type DimensionValue, StyleSheet, View } from 'react-native';
 import {
   Button,
   Card,
@@ -15,6 +15,7 @@ type Palette = typeof Colors.light;
 type BellowsSectionProps = {
   bellowsServerUrl: string;
   bellowsApiKey: string;
+  bellowsError: string | null;
   budgetInfo: BellowsBudgetInfo | null;
   isBellowsLoading: boolean;
   models: BellowsModel[];
@@ -26,6 +27,7 @@ type BellowsSectionProps = {
 export function BellowsSection({
   bellowsServerUrl,
   bellowsApiKey,
+  bellowsError,
   budgetInfo,
   isBellowsLoading,
   models,
@@ -72,6 +74,13 @@ export function BellowsSection({
           Test Connection
         </Button>
 
+        {/* Error display */}
+        {bellowsError ? (
+          <Text variant="bodySmall" style={{ color: palette.danger }}>
+            {bellowsError}
+          </Text>
+        ) : null}
+
         {/* Budget display */}
         {budgetInfo ? (
           <View style={[styles.budgetCard, { backgroundColor: palette.background, borderColor: palette.border }]}>
@@ -98,7 +107,7 @@ export function BellowsSection({
                   style={[
                     styles.progressBarFill,
                     {
-                      width: `${spendPercent}%` as any,
+                      width: `${spendPercent}%` as DimensionValue,
                       backgroundColor: palette.tint,
                     },
                   ]}
