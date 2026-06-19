@@ -23,5 +23,5 @@
     "Run `npm run lint` in /projects/sandbox/ANVIL-CLIENT and confirm no new errors"
   ],
   "blocked_reason": null,
-  "findings": "Implementation completed cleanly. Both typecheck and lint pass with zero errors. The provider uses useCallback and useMemo for stability. The chat screen uses FlatList with auto-scroll. Model selector uses react-native-paper Menu."
+  "findings": "Implementation completed cleanly. Both typecheck and lint pass with zero errors. The provider uses useCallback and useMemo for stability. The chat screen uses FlatList with auto-scroll. Model selector uses react-native-paper Menu. Post-review fix: resolved stale closure in sendMessage by adding a useRef to track latest messages and removing messages from the useCallback dependency array. This ensures concurrent sends always reference the current messages array."
 }
