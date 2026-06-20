@@ -170,22 +170,6 @@ export const CONNECTORS: Connector[] =
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
-    "slug": "whatsapp-business",
-    "name": "WhatsApp Business",
-    "url": "https://zapier.com/apps/whatsapp",
-    "aiNotes": "Send message, send template, watch incoming messages",
-    "categories": [
-      "chat",
-      "messaging",
-      "action",
-      "trigger"
-    ],
-    "isZapier": true,
-    "tier": "freemium",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
     "slug": "mattermost",
     "name": "Mattermost",
     "url": "https://zapier.com/apps/mattermost",
@@ -215,21 +199,6 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
-    "slug": "vonage",
-    "name": "Vonage (Nexmo)",
-    "url": "https://zapier.com/apps/nexmo",
-    "aiNotes": "Send SMS, receive SMS, text to speech, verify phone number",
-    "categories": [
-      "sms",
-      "voice",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "freemium",
-    "dead": true,
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
@@ -343,37 +312,6 @@ export const CONNECTORS: Connector[] =
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
-    "slug": "supabase",
-    "name": "Supabase",
-    "url": "https://zapier.com/apps/supabase",
-    "aiNotes": "Insert row, update row, watch table, select rows, delete row, call edge function",
-    "categories": [
-      "database",
-      "cloud",
-      "trigger",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "free",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
-    "slug": "mongodb",
-    "name": "MongoDB",
-    "url": "https://zapier.com/apps/mongodb",
-    "aiNotes": "Insert document, update document, watch collection, find document, aggregate",
-    "categories": [
-      "database",
-      "trigger",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "freemium",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
     "slug": "firebase-firestore",
     "name": "Firebase Firestore",
     "url": "https://zapier.com/apps/firebase",
@@ -390,40 +328,10 @@ export const CONNECTORS: Connector[] =
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
-    "slug": "dynamodb",
-    "name": "AWS DynamoDB",
-    "url": "https://zapier.com/apps/aws-dynamodb",
-    "aiNotes": "Put item, get item, delete item, query, scan table",
-    "categories": [
-      "database",
-      "aws",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "freemium",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
-    "slug": "redis",
-    "name": "Redis",
-    "url": "https://zapier.com/apps/redis",
-    "aiNotes": "Set key, get key, publish to channel, subscribe, expire key",
-    "categories": [
-      "database",
-      "cache",
-      "action"
-    ],
-    "isZapier": false,
-    "tier": "free",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
     "slug": "nocodb",
     "name": "NocoDB",
     "url": "https://nocodb.com",
-    "aiNotes": "Create row, update row, watch table, search, delete row \u2014 open-source Airtable alternative",
+    "aiNotes": "Create row, update row, watch table, search, delete row — open-source Airtable alternative",
     "categories": [
       "database",
       "spreadsheet",
@@ -439,7 +347,7 @@ export const CONNECTORS: Connector[] =
     "slug": "baserow",
     "name": "Baserow",
     "url": "https://baserow.io",
-    "aiNotes": "Create row, update row, watch rows, search \u2014 open-source database UI",
+    "aiNotes": "Create row, update row, watch rows, search — open-source database UI",
     "categories": [
       "database",
       "spreadsheet",
@@ -481,21 +389,6 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
-    "slug": "anthropic",
-    "name": "Anthropic Claude",
-    "url": "https://zapier.com/apps/claude",
-    "aiNotes": "Chat completion, text analysis, document Q&A, code generation, summarization",
-    "categories": [
-      "ai",
-      "llm",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "freemium",
-    "dead": true,
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
@@ -548,7 +441,7 @@ export const CONNECTORS: Connector[] =
     "slug": "replicate",
     "name": "Replicate",
     "url": "https://zapier.com/apps/replicate",
-    "aiNotes": "Run any open-source model, image generation, video, audio, code \u2014 pay per prediction",
+    "aiNotes": "Run any open-source model, image generation, video, audio, code — pay per prediction",
     "categories": [
       "ai",
       "ml",
@@ -607,21 +500,6 @@ export const CONNECTORS: Connector[] =
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
-    "slug": "stability-ai",
-    "name": "Stability AI",
-    "url": "https://zapier.com/apps/stability-ai",
-    "aiNotes": "Image generation Stable Diffusion, image to image, inpainting, upscaling",
-    "categories": [
-      "ai",
-      "image",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "freemium",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
     "slug": "elevenlabs",
     "name": "ElevenLabs",
     "url": "https://zapier.com/apps/elevenlabs",
@@ -673,7 +551,7 @@ export const CONNECTORS: Connector[] =
     "slug": "pinecone",
     "name": "Pinecone",
     "url": "https://zapier.com/apps/pinecone",
-    "aiNotes": "Upsert vectors, query similarity, delete vectors, fetch by ID \u2014 managed vector database",
+    "aiNotes": "Upsert vectors, query similarity, delete vectors, fetch by ID — managed vector database",
     "categories": [
       "vector",
       "ai",
@@ -721,7 +599,7 @@ export const CONNECTORS: Connector[] =
     "slug": "chroma",
     "name": "Chroma",
     "url": "https://www.trychroma.com",
-    "aiNotes": "Add documents with embeddings, query by similarity, metadata filtering \u2014 local or hosted",
+    "aiNotes": "Add documents with embeddings, query by similarity, metadata filtering — local or hosted",
     "categories": [
       "vector",
       "ai",
@@ -780,21 +658,6 @@ export const CONNECTORS: Connector[] =
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
-    "slug": "bitbucket",
-    "name": "Bitbucket",
-    "url": "https://zapier.com/apps/bitbucket",
-    "aiNotes": "New commit, PR created, issue created, watch repository events",
-    "categories": [
-      "dev",
-      "trigger",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "freemium",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
     "slug": "linear",
     "name": "Linear",
     "url": "https://zapier.com/apps/linear",
@@ -824,21 +687,6 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
-    "slug": "sentry",
-    "name": "Sentry",
-    "url": "https://zapier.com/apps/sentry",
-    "aiNotes": "New issue, error alert, issue resolved, new release, performance alert",
-    "categories": [
-      "dev",
-      "monitoring",
-      "trigger"
-    ],
-    "isZapier": true,
-    "tier": "freemium",
-    "dead": true,
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
@@ -952,22 +800,6 @@ export const CONNECTORS: Connector[] =
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
-    "slug": "onedrive",
-    "name": "OneDrive",
-    "url": "https://zapier.com/apps/microsoft-onedrive",
-    "aiNotes": "Upload file, watch folder, download, share, create folder",
-    "categories": [
-      "storage",
-      "microsoft",
-      "trigger",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "freemium",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
     "slug": "box",
     "name": "Box",
     "url": "https://zapier.com/apps/box",
@@ -997,22 +829,6 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
-    "slug": "gcs",
-    "name": "Google Cloud Storage",
-    "url": "https://zapier.com/apps/google-cloud-storage",
-    "aiNotes": "Upload object, get object, watch bucket, delete object, generate signed URL",
-    "categories": [
-      "storage",
-      "google",
-      "cloud",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "freemium",
-    "dead": true,
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
@@ -1061,21 +877,6 @@ export const CONNECTORS: Connector[] =
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
-    "slug": "instagram",
-    "name": "Instagram",
-    "url": "https://zapier.com/apps/instagram",
-    "aiNotes": "New media, watch mentions, post image, publish story via Business API",
-    "categories": [
-      "social",
-      "trigger",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "freemium",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
     "slug": "facebook",
     "name": "Facebook Pages",
     "url": "https://zapier.com/apps/facebook-pages",
@@ -1107,21 +908,6 @@ export const CONNECTORS: Connector[] =
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
-    "slug": "tiktok",
-    "name": "TikTok",
-    "url": "https://zapier.com/apps/tiktok",
-    "aiNotes": "Publish video, watch new videos, track engagement",
-    "categories": [
-      "social",
-      "video",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "freemium",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
     "slug": "reddit",
     "name": "Reddit",
     "url": "https://zapier.com/apps/reddit",
@@ -1134,21 +920,6 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
-    "slug": "mastodon",
-    "name": "Mastodon",
-    "url": "https://zapier.com/apps/mastodon",
-    "aiNotes": "Post toot, watch home timeline, watch hashtag, reply",
-    "categories": [
-      "social",
-      "trigger",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "free",
-    "dead": true,
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
@@ -1335,22 +1106,6 @@ export const CONNECTORS: Connector[] =
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
-    "slug": "customer-io",
-    "name": "Customer.io",
-    "url": "https://zapier.com/apps/customer-io",
-    "aiNotes": "Track event, create user, watch email open, send transactional email",
-    "categories": [
-      "email",
-      "marketing",
-      "action",
-      "trigger"
-    ],
-    "isZapier": true,
-    "tier": "freemium",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
     "slug": "apollo",
     "name": "Apollo.io",
     "url": "https://zapier.com/apps/apollo",
@@ -1472,26 +1227,10 @@ export const CONNECTORS: Connector[] =
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
-    "slug": "height",
-    "name": "Height",
-    "url": "https://height.app",
-    "aiNotes": "Create task, update task, watch list changes, assign, comment",
-    "categories": [
-      "project",
-      "dev",
-      "trigger",
-      "action"
-    ],
-    "isZapier": false,
-    "tier": "free",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
     "slug": "plane",
     "name": "Plane",
     "url": "https://plane.so",
-    "aiNotes": "Create issue, watch project, update status \u2014 open-source Linear alternative",
+    "aiNotes": "Create issue, watch project, update status — open-source Linear alternative",
     "categories": [
       "project",
       "dev",
@@ -1673,7 +1412,7 @@ export const CONNECTORS: Connector[] =
     "slug": "attio",
     "name": "Attio",
     "url": "https://zapier.com/apps/attio",
-    "aiNotes": "New record, update attribute, watch list, create note \u2014 modern CRM",
+    "aiNotes": "New record, update attribute, watch list, create note — modern CRM",
     "categories": [
       "crm",
       "trigger",
@@ -1792,21 +1531,6 @@ export const CONNECTORS: Connector[] =
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
-    "slug": "paddle",
-    "name": "Paddle",
-    "url": "https://zapier.com/apps/paddle",
-    "aiNotes": "New payment, subscription updated, refund issued, create checkout link",
-    "categories": [
-      "payment",
-      "trigger",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "freemium",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
     "slug": "zendesk",
     "name": "Zendesk",
     "url": "https://zapier.com/apps/zendesk",
@@ -1853,38 +1577,6 @@ export const CONNECTORS: Connector[] =
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
-    "slug": "help-scout",
-    "name": "Help Scout",
-    "url": "https://zapier.com/apps/helpscout",
-    "aiNotes": "New conversation, new customer, reply, assign, close conversation",
-    "categories": [
-      "support",
-      "email",
-      "trigger",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "freemium",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
-    "slug": "front",
-    "name": "Front",
-    "url": "https://zapier.com/apps/front",
-    "aiNotes": "New message, conversation assigned, reply, create conversation, snooze",
-    "categories": [
-      "support",
-      "email",
-      "trigger",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "paid",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
     "slug": "crisp",
     "name": "Crisp",
     "url": "https://zapier.com/apps/crisp",
@@ -1916,25 +1608,10 @@ export const CONNECTORS: Connector[] =
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
-    "slug": "loom",
-    "name": "Loom",
-    "url": "https://zapier.com/apps/loom",
-    "aiNotes": "New video recorded, watch view, share video link",
-    "categories": [
-      "video",
-      "action",
-      "trigger"
-    ],
-    "isZapier": true,
-    "tier": "free",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
     "slug": "calendly",
     "name": "Calendly",
     "url": "https://zapier.com/apps/calendly",
-    "aiNotes": "Event scheduled, event cancelled, invitee created \u2014 appointment scheduling trigger",
+    "aiNotes": "Event scheduled, event cancelled, invitee created — appointment scheduling trigger",
     "categories": [
       "calendar",
       "trigger"
@@ -1948,7 +1625,7 @@ export const CONNECTORS: Connector[] =
     "slug": "calcom",
     "name": "Cal.com",
     "url": "https://cal.com",
-    "aiNotes": "Booking created, booking cancelled, meeting reminder \u2014 open-source scheduling",
+    "aiNotes": "Booking created, booking cancelled, meeting reminder — open-source scheduling",
     "categories": [
       "calendar",
       "trigger"
@@ -2128,21 +1805,6 @@ export const CONNECTORS: Connector[] =
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
-    "slug": "gitbook",
-    "name": "GitBook",
-    "url": "https://zapier.com/apps/gitbook",
-    "aiNotes": "Create content, watch changes, publish documentation",
-    "categories": [
-      "docs",
-      "dev",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "free",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
     "slug": "dropbox-paper",
     "name": "Dropbox Paper",
     "url": "https://zapier.com/apps/dropbox",
@@ -2172,25 +1834,10 @@ export const CONNECTORS: Connector[] =
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
-    "slug": "elasticsearch",
-    "name": "Elasticsearch",
-    "url": "https://zapier.com/apps/elasticsearch",
-    "aiNotes": "Index document, search query, delete document, update index",
-    "categories": [
-      "search",
-      "database",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "freemium",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
     "slug": "typesense",
     "name": "Typesense",
     "url": "https://typesense.org",
-    "aiNotes": "Index document, search, update, delete \u2014 fast open-source search engine",
+    "aiNotes": "Index document, search, update, delete — fast open-source search engine",
     "categories": [
       "search",
       "action"
@@ -2204,7 +1851,7 @@ export const CONNECTORS: Connector[] =
     "slug": "meilisearch",
     "name": "Meilisearch",
     "url": "https://www.meilisearch.com",
-    "aiNotes": "Add documents, search, delete \u2014 blazing fast open-source search",
+    "aiNotes": "Add documents, search, delete — blazing fast open-source search",
     "categories": [
       "search",
       "action"
@@ -2226,22 +1873,6 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
-    "slug": "new-relic",
-    "name": "New Relic",
-    "url": "https://zapier.com/apps/new-relic",
-    "aiNotes": "Alert policy violated, error rate spike, record custom event",
-    "categories": [
-      "monitoring",
-      "analytics",
-      "trigger",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "freemium",
-    "dead": true,
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
@@ -2288,20 +1919,6 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
-    "slug": "rippling",
-    "name": "Rippling",
-    "url": "https://zapier.com/apps/rippling",
-    "aiNotes": "Employee onboarded, payroll event, device enrolled",
-    "categories": [
-      "hr",
-      "trigger"
-    ],
-    "isZapier": true,
-    "tier": "paid",
-    "dead": true,
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
@@ -2366,21 +1983,6 @@ export const CONNECTORS: Connector[] =
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
-    "slug": "openweathermap",
-    "name": "OpenWeatherMap",
-    "url": "https://zapier.com/apps/openweathermap",
-    "aiNotes": "Current weather, forecast, air quality, weather alert for a location",
-    "categories": [
-      "data",
-      "weather",
-      "trigger"
-    ],
-    "isZapier": true,
-    "tier": "free",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
     "slug": "twilio-voice",
     "name": "Twilio Voice",
     "url": "https://zapier.com/apps/twilio",
@@ -2393,21 +1995,6 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
-    "slug": "sap",
-    "name": "SAP",
-    "url": "https://zapier.com/apps/sap",
-    "aiNotes": "Create/update ERP records, purchase orders, invoices",
-    "categories": [
-      "erp",
-      "business",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "paid",
-    "dead": true,
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
@@ -2600,38 +2187,6 @@ export const CONNECTORS: Connector[] =
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
-    "slug": "google-cloud-functions",
-    "name": "Google Cloud Functions",
-    "url": "https://zapier.com/apps/google-cloud-functions",
-    "aiNotes": "Invoke function via HTTP trigger, pass JSON payload",
-    "categories": [
-      "cloud",
-      "google",
-      "dev",
-      "action"
-    ],
-    "isZapier": false,
-    "tier": "free",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
-    "slug": "azure-functions",
-    "name": "Azure Functions",
-    "url": "https://zapier.com/apps/azure",
-    "aiNotes": "Trigger function, run serverless code, process queue messages",
-    "categories": [
-      "cloud",
-      "microsoft",
-      "dev",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "paid",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
     "slug": "firebase",
     "name": "Firebase / Firestore",
     "url": "https://zapier.com/apps/firebase",
@@ -2660,22 +2215,6 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
-    "slug": "fivetran",
-    "name": "Fivetran",
-    "url": "https://zapier.com/apps/fivetran",
-    "aiNotes": "Trigger connector sync, watch sync completion, manage schemas",
-    "categories": [
-      "etl",
-      "data-pipeline",
-      "action",
-      "trigger"
-    ],
-    "isZapier": false,
-    "tier": "paid",
-    "dead": true,
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
@@ -2742,22 +2281,6 @@ export const CONNECTORS: Connector[] =
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
-    "slug": "lever",
-    "name": "Lever",
-    "url": "https://zapier.com/apps/lever",
-    "aiNotes": "Watch new candidate, update opportunity stage, post job",
-    "categories": [
-      "hr",
-      "recruitment",
-      "trigger",
-      "action"
-    ],
-    "isZapier": true,
-    "tier": "paid",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
     "slug": "delighted",
     "name": "Delighted",
     "url": "https://zapier.com/apps/delighted",
@@ -2771,22 +2294,6 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
-    "slug": "microsoft-onedrive-business",
-    "name": "OneDrive for Business",
-    "url": "https://zapier.com/apps/microsoft-onedrive-business",
-    "aiNotes": "Upload file, watch new file, share link, sync folder",
-    "categories": [
-      "storage",
-      "microsoft",
-      "action",
-      "trigger"
-    ],
-    "isZapier": true,
-    "tier": "paid",
-    "dead": true,
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {
@@ -2896,37 +2403,6 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
-    "slug": "chorus",
-    "name": "Chorus.ai",
-    "url": "https://zapier.com/apps/chorus",
-    "aiNotes": "Watch new call, get transcript, sync CRM notes",
-    "categories": [
-      "sales",
-      "ai",
-      "trigger"
-    ],
-    "isZapier": false,
-    "tier": "paid",
-    "dead": true,
-    "lastChecked": "2026-06-15T09:30:47Z"
-  },
-  {
-    "slug": "apollo-io",
-    "name": "Apollo.io Prospecting",
-    "url": "https://zapier.com/apps/apollo-io",
-    "aiNotes": "Enrich contact, add to sequence, watch new email reply, export leads",
-    "categories": [
-      "sales",
-      "crm",
-      "action",
-      "trigger"
-    ],
-    "isZapier": true,
-    "tier": "free",
-    "dead": true,
     "lastChecked": "2026-06-15T09:30:47Z"
   },
   {

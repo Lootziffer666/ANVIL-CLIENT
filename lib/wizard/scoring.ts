@@ -30,13 +30,7 @@ function tokenize(text: string): string[] {
     .filter((t) => t.length > 1);
 }
 
-function getStage(categories: string[]): PipelineStage {
-  const lower = categories.map((c) => c.toLowerCase());
-  if (lower.includes('trigger')) return 'trigger';
-  if (lower.includes('llm') || lower.includes('ai') || lower.includes('ml')) return 'llmProcessor';
-  if (lower.includes('action')) return 'action';
-  return 'mcpContext';
-}
+const ROUTING_KEYWORDS = ['trigger', 'action', 'llm', 'ai', 'ml'];
 
 function getStages(categories: string[]): PipelineStage[] {
   const lower = categories.map((c) => c.toLowerCase());
@@ -44,7 +38,8 @@ function getStages(categories: string[]): PipelineStage[] {
   if (lower.includes('trigger')) stages.push('trigger');
   if (lower.includes('llm') || lower.includes('ai') || lower.includes('ml')) stages.push('llmProcessor');
   if (lower.includes('action')) stages.push('action');
-  if (stages.length === 0 || lower.some((c) => !['trigger', 'action', 'llm', 'ai', 'ml'].includes(c))) {
+  // Only assign to mcpContext if connector has NO routing keywords at all
+  if (stages.length === 0) {
     stages.push('mcpContext');
   }
   return stages;
@@ -103,9 +98,15 @@ export function computePipeline(
 
     if (score === 0) continue;
 
-    // Normalize score to percentage (based on total possible matches)
-    const maxPossible = goalTokens.length + 3; // max keyword matches + stack bonus
-    const scorePercent = Math.min(Math.round((score / maxPossible) * 100), 100);
+    // Normalize: use matched token count as base to avoid penalizing longer queries
+    let matchedCount = 0;
+    for (const token of goalTokens) {
+      if (connectorTokens.includes(token)) {
+        matchedCount += 1;
+      }
+    }
+    const denominator = Math.max(matchedCount, 1) + 3;
+    const scorePercent = Math.min(Math.round((score / denominator) * 100), 100);
 
     // Determine which stages this connector belongs to
     const stages = getStages(connector.categories);
@@ -114,14 +115,22 @@ export function computePipeline(
       const current = stageScores[stage];
       if (!current || scorePercent > current.score) {
         // Pick the most relevant category for this stage
-        const topCategory =
-          connector.categories.find((c) => {
+        let topCategory: string;
+        if (stage === 'trigger') {
+          topCategory = connector.categories.find((c) => c.toLowerCase() === 'trigger') || connector.categories[0] || '';
+        } else if (stage === 'llmProcessor') {
+          topCategory = connector.categories.find((c) => {
             const cl = c.toLowerCase();
-            if (stage === 'trigger') return cl === 'trigger';
-            if (stage === 'llmProcessor') return cl === 'llm' || cl === 'ai' || cl === 'ml';
-            if (stage === 'action') return cl === 'action';
-            return true;
+            return cl === 'llm' || cl === 'ai' || cl === 'ml';
           }) || connector.categories[0] || '';
+        } else if (stage === 'action') {
+          topCategory = connector.categories.find((c) => c.toLowerCase() === 'action') || connector.categories[0] || '';
+        } else {
+          // mcpContext: filter out routing keywords, pick first domain category
+          topCategory =
+            connector.categories.find((c) => !ROUTING_KEYWORDS.includes(c.toLowerCase())) ||
+            connector.categories[0] || '';
+        }
 
         stageScores[stage] = {
           connector,
