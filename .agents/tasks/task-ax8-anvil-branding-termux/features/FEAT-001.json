@@ -2,7 +2,7 @@
   "id": "FEAT-001",
   "type": "feat",
   "description": "Rename OpenCode-dependent tabs to Anvil branding ('Anvil Chat', 'Anvil Workspace') and add Termux/Shizuku integration for running the Bellows server locally on an Android phone. This includes: (1) Tab renaming in the layout, (2) A new lib/termux/ module with helpers to detect Termux, launch it with commands, and manage the local Bellows server lifecycle, (3) A new TermuxSection settings component that shows server status and provides launch/stop buttons, (4) Integration in the Settings screen.",
-  "status": "in_progress",
+  "status": "completed",
   "steps": [
     "1. In app/(tabs)/_layout.tsx: Rename the 'index' tab from tabBarLabel 'Chat' to 'Forge' (the Anvil forging metaphor). Keep title as 'ANVIL'. Rename the 'workspace' tab title from 'Workspace' to 'Anvil Workspace'. Use a hammer/anvil icon metaphor: change the Chat icon from 'message.fill' to 'hammer.fill' and keep workspace as 'folder.fill'.",
     "2. Create lib/termux/termux.ts with: (a) isTermuxInstalled() - uses expo-intent-launcher to check if com.termux is resolvable, (b) launchTermux(command?: string) - launches Termux with an optional RUN_COMMAND intent extra, (c) launchBellowsServer() - calls launchTermux with the command to start litellm proxy (pip install litellm && litellm --config /data/data/com.termux/files/home/bellows-config.yaml --port 4000), (d) stopBellowsServer() - sends a kill command via Termux intent, (e) Types and constants (TERMUX_PACKAGE, TERMUX_RUN_COMMAND_ACTION, default port).",
@@ -23,5 +23,5 @@
     "npm run typecheck"
   ],
   "blocked_reason": null,
-  "findings": ""
+  "findings": "ActivityAction enum in expo-intent-launcher does not include MAIN - used raw string 'android.intent.action.MAIN' instead. MaterialIcons 'hardware' icon used as the Android/web fallback for SF Symbol 'hammer.fill'."
 }

@@ -43,7 +43,10 @@ export function isAndroid(): boolean {
 /**
  * Attempts to detect if Termux is installed on the device.
  *
- * On Android, tries to resolve the Termux package via an intent.
+ * Uses Linking.canOpenURL to query package visibility without launching Termux.
+ * Requires the <queries> declaration for com.termux in AndroidManifest.xml
+ * (handled via the Expo config plugin in app.config.ts).
+ *
  * On other platforms, always returns { available: false, platform: 'other' }.
  */
 export async function isTermuxInstalled(): Promise<TermuxStatus> {
@@ -52,13 +55,14 @@ export async function isTermuxInstalled(): Promise<TermuxStatus> {
   }
 
   try {
-    // Try launching with VIEW action to check if Termux is resolvable
-    await IntentLauncher.startActivityAsync('android.intent.action.MAIN', {
-      packageName: TERMUX_PACKAGE,
-    });
-    return { available: true, platform: 'android' };
+    // canOpenURL checks package visibility without actually launching the app.
+    // We use the intent:// scheme which resolves against the package name.
+    const canOpen = await Linking.canOpenURL(
+      `intent://#Intent;package=${TERMUX_PACKAGE};end`,
+    );
+    return { available: canOpen, platform: 'android' };
   } catch {
-    // If the intent fails, Termux is likely not installed
+    // If the query fails, assume Termux is not available
     return { available: false, platform: 'android' };
   }
 }

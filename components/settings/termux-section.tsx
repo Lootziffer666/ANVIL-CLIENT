@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import {
   Button,
@@ -25,6 +25,9 @@ type TermuxSectionProps = {
   palette: Palette;
 };
 
+const POLL_INTERVAL_MS = 2000;
+const POLL_MAX_ATTEMPTS = 10;
+
 export function TermuxSection({ palette }: TermuxSectionProps) {
   const [termuxStatus, setTermuxStatus] = useState<TermuxStatus | null>(null);
   const [serverHealthy, setServerHealthy] = useState<boolean | null>(null);
@@ -32,6 +35,40 @@ export function TermuxSection({ palette }: TermuxSectionProps) {
   const [isLaunching, setIsLaunching] = useState(false);
   const [isStopping, setIsStopping] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const pollTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pollCountRef = useRef(0);
+
+  const stopPolling = useCallback(() => {
+    if (pollTimerRef.current !== null) {
+      clearTimeout(pollTimerRef.current);
+      pollTimerRef.current = null;
+    }
+    pollCountRef.current = 0;
+  }, []);
+
+  const pollHealth = useCallback(() => {
+    pollCountRef.current += 1;
+    if (pollCountRef.current > POLL_MAX_ATTEMPTS) {
+      stopPolling();
+      return;
+    }
+    pollTimerRef.current = setTimeout(async () => {
+      const healthy = await checkBellowsServerHealth(DEFAULT_BELLOWS_PORT);
+      if (healthy) {
+        setServerHealthy(true);
+        stopPolling();
+      } else {
+        pollHealth();
+      }
+    }, POLL_INTERVAL_MS);
+  }, [stopPolling]);
+
+  // Clean up polling on unmount
+  useEffect(() => {
+    return () => {
+      stopPolling();
+    };
+  }, [stopPolling]);
 
   const checkStatus = useCallback(async () => {
     setIsChecking(true);
@@ -63,6 +100,9 @@ export function TermuxSection({ palette }: TermuxSectionProps) {
     setError(null);
     try {
       await launchBellowsServer();
+      // Start auto-polling for server health after launch
+      stopPolling();
+      pollHealth();
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Failed to launch server');
     } finally {

@@ -1,0 +1,26 @@
+{
+  "id": "FEAT-002",
+  "type": "fix",
+  "description": "Address review findings: (1) Replace isTermuxInstalled() with non-launching detection via Linking.canOpenURL, (2) Add <queries> declaration for Android 11+ package visibility, (3) Add com.termux.permission.RUN_COMMAND permission, (4) Add auto-poll after launching the server in TermuxSection.",
+  "status": "completed",
+  "steps": [
+    "1. In lib/termux/termux.ts: Replace isTermuxInstalled() to use Linking.canOpenURL instead of startActivityAsync so it does not launch Termux as a side effect.",
+    "2. In app.config.ts: Add com.termux.permission.RUN_COMMAND to android.permissions array.",
+    "3. In app.config.ts: Add a config plugin that injects <queries><package android:name='com.termux'/></queries> into AndroidManifest.xml.",
+    "4. In components/settings/termux-section.tsx: Add auto-poll retry loop after launching the server (poll health every 2s for ~20s)."
+  ],
+  "acceptance_criteria": [
+    "isTermuxInstalled() does not launch Termux - uses Linking.canOpenURL or similar non-invasive check",
+    "app.config.ts declares com.termux.permission.RUN_COMMAND in android.permissions",
+    "app.config.ts includes a plugin that adds <queries> for com.termux package",
+    "TermuxSection auto-polls health after start, with a retry loop (~10 attempts, 2s interval)",
+    "npm run lint passes",
+    "npm run typecheck passes"
+  ],
+  "verification": [
+    "npm run lint",
+    "npm run typecheck"
+  ],
+  "blocked_reason": null,
+  "findings": "ConfigPlugin cannot be placed directly in ExpoConfig.plugins array (typed as string|[string]|[string,any]). Applied plugin via export wrapping pattern instead. Used intent:// scheme URI with Linking.canOpenURL for non-invasive Termux detection."
+}

@@ -1,4 +1,28 @@
 import type { ExpoConfig } from 'expo/config';
+import { AndroidConfig, withAndroidManifest } from 'expo/config-plugins';
+import type { ConfigPlugin } from 'expo/config-plugins';
+
+/**
+ * Config plugin that adds <queries><package android:name="com.termux"/></queries>
+ * to AndroidManifest.xml for Android 11+ package visibility.
+ */
+const withTermuxQueries: ConfigPlugin = (config) => {
+  return withAndroidManifest(config, (modConfig) => {
+    const manifest = modConfig.modResults.manifest;
+
+    // Ensure the queries array exists
+    if (!manifest.queries) {
+      manifest.queries = [];
+    }
+
+    // Add the Termux package query
+    manifest.queries.push({
+      package: [{ $: { 'android:name': 'com.termux' } }],
+    } as AndroidConfig.Manifest.ManifestQuery);
+
+    return modConfig;
+  });
+};
 
 function env(name: string) {
   const value = process.env[name]?.trim();
@@ -36,6 +60,7 @@ const config: ExpoConfig = {
     },
     edgeToEdgeEnabled: true,
     predictiveBackGestureEnabled: false,
+    permissions: ['com.termux.permission.RUN_COMMAND'],
   },
   web: {
     output: 'static',
@@ -77,4 +102,4 @@ const config: ExpoConfig = {
   },
 };
 
-export default config;
+export default withTermuxQueries(config as Parameters<typeof withTermuxQueries>[0]) as unknown as ExpoConfig;
