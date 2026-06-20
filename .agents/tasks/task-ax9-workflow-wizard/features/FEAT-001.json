@@ -1,0 +1,28 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Bundle the 200 connectors from RAPIER/catalog/connectors.json as a TypeScript constant, implement the scoring algorithm, and create the full Wizard tab screen with pipeline cards, tier filter, and live-update debounce.",
+  "status": "in_progress",
+  "steps": [
+    "Copy /projects/sandbox/RAPIER/catalog/connectors.json into the project as a TypeScript constant file at /projects/sandbox/ANVIL-CLIENT/lib/wizard/connectors.ts - export it as a typed array with interface Connector { slug, name, url, aiNotes, categories, isZapier, tier, dead, lastChecked }",
+    "Create /projects/sandbox/ANVIL-CLIENT/lib/wizard/scoring.ts implementing the scoring algorithm: (1) tokenize aiNotes + categories of each connector, (2) compute keyword overlap with user goal input, (3) boost score for stack-match (if connector name or slug appears in user stack input), (4) filter by budget tier (free < freemium < paid, 'beliebig' means no filter), (5) return top matches grouped by pipeline stage - use categories to determine stage: 'trigger' category = TRIGGER stage, 'llm' or 'ai' or 'ml' category = LLM PROCESSOR, 'action' category = ACTION, remaining/general = MCP CONTEXT",
+    "Add icon mapping in /projects/sandbox/ANVIL-CLIENT/components/ui/icon-symbol.tsx: add 'wand.and.stars' mapped to 'auto-fix' in the MAPPING object",
+    "Create the Wizard tab screen at /projects/sandbox/ANVIL-CLIENT/app/(tabs)/wizard.tsx using React Native Paper components (Card, Text, TextInput, SegmentedButtons or Chip for tier selection, Surface). The screen has: (a) a TextInput for 'Current Stack', (b) a TextInput for 'Goal/Direction', (c) a tier selector (free/freemium/paid/beliebig), (d) 4 pipeline cards displayed vertically showing TRIGGER -> LLM PROCESSOR -> ACTION -> MCP CONTEXT. Each card shows: connector name, score percentage, top category as chip, tier badge. Implement 500ms debounce on input changes to trigger re-scoring. Follow IIG theming with Colors[colorScheme] palette, same styling patterns as workspace.tsx (ScrollView, Surface hero, Card containers).",
+    "Update /projects/sandbox/ANVIL-CLIENT/app/(tabs)/_layout.tsx: insert a new Tabs.Screen for 'wizard' between the 'workspace' and 'bellows-chat' entries. Use tabBarLabel 'Wizard', tabBarIcon with IconSymbol name='wand.and.stars', title 'Synergy Wizard'."
+  ],
+  "acceptance_criteria": [
+    "lib/wizard/connectors.ts exports a typed array of 200 connector objects",
+    "lib/wizard/scoring.ts exports a function that takes (stack, goal, tier) and returns scored results for 4 pipeline stages",
+    "The Wizard tab appears between Workspace and Bellows in the tab bar with a wand icon",
+    "The Wizard screen renders 3 inputs and 4 pipeline cards",
+    "Scoring updates automatically 500ms after last keystroke",
+    "Budget tier filter restricts results correctly",
+    "npm run typecheck passes with no errors"
+  ],
+  "verification": [
+    "Run: cd /projects/sandbox/ANVIL-CLIENT && npm run typecheck",
+    "Run: cd /projects/sandbox/ANVIL-CLIENT && npm run lint"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

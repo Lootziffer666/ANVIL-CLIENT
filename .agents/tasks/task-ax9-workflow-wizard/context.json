@@ -1,0 +1,25 @@
+{
+  "project_type": "Expo 54 / React Native 0.81 mobile app with TypeScript",
+  "language": "TypeScript / TSX",
+  "build_system": "Expo CLI + npm, no Docker",
+  "test_framework": "Playwright e2e (web export), plus lint+typecheck as static validation",
+  "build_command": "npm run typecheck",
+  "test_command": "npm run lint && npm run typecheck",
+  "verification_instructions": "Run npm run typecheck to confirm no type errors after adding new files",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "cd /projects/sandbox/ANVIL-CLIENT && npm install",
+  "environment_constraints": "No Docker daemon, no native device builds. Validation via typecheck and lint only.",
+  "contribution_requirements": "Follow IIG theme palette from constants/theme.ts. Use react-native-paper components. Tab files in app/(tabs)/. Use @/ path aliases.",
+  "key_patterns": "Tabs are single TSX files in app/(tabs)/. Icons use IconSymbol with SF Symbol names mapped to MaterialIcons. Colors via useColorScheme + Colors[scheme]. Paper theme via constants/paper-theme.ts. Hooks in hooks/, lib code in lib/.",
+  "relevant_files": [
+    "app/(tabs)/_layout.tsx",
+    "app/(tabs)/workspace.tsx",
+    "components/ui/icon-symbol.tsx",
+    "constants/theme.ts",
+    "constants/paper-theme.ts",
+    "hooks/use-color-scheme.ts",
+    "package.json",
+    "tsconfig.json"
+  ],
+  "directory_structure": "app/(tabs)/ = tab screens, components/ = reusable UI, constants/ = theme/colors, hooks/ = custom hooks, lib/ = utilities, assets/ = static assets, providers/ = React context providers"
+}

@@ -24,7 +24,8 @@ const MAPPING = {
   'gearshape.fill': 'settings',
   'folder.fill': 'folder',
   'sparkles': 'auto-awesome',
-} as IconMapping;
+  'wand.and.stars': 'auto-fix-high',
+} satisfies Partial<IconMapping>;
 
 /**
  * An icon component that uses native SF Symbols on iOS, and Material Icons on Android and web.

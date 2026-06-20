@@ -48,6 +48,14 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="wizard"
+        options={{
+          title: 'Synergy Wizard',
+          tabBarLabel: 'Wizard',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="wand.and.stars" color={color} />,
+        }}
+      />
+      <Tabs.Screen
         name="bellows-chat"
         options={{
           title: 'Bellows',

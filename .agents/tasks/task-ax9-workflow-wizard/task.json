@@ -1,0 +1,7 @@
+{
+  "task_id": "task-ax9-workflow-wizard",
+  "task_description": "Create the Synergy Workflow Wizard as a new tab in ANVIL-CLIENT with bundled connector data, scoring algorithm, pipeline cards, tier filter, and live-update debounce.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001"],
+  "blocked_reason": null
+}
