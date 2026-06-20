@@ -2,7 +2,7 @@
   "id": "FEAT-001",
   "type": "feat",
   "description": "Bundle the 200 connectors from RAPIER/catalog/connectors.json as a TypeScript constant, implement the scoring algorithm, and create the full Wizard tab screen with pipeline cards, tier filter, and live-update debounce.",
-  "status": "in_progress",
+  "status": "completed",
   "steps": [
     "Copy /projects/sandbox/RAPIER/catalog/connectors.json into the project as a TypeScript constant file at /projects/sandbox/ANVIL-CLIENT/lib/wizard/connectors.ts - export it as a typed array with interface Connector { slug, name, url, aiNotes, categories, isZapier, tier, dead, lastChecked }",
     "Create /projects/sandbox/ANVIL-CLIENT/lib/wizard/scoring.ts implementing the scoring algorithm: (1) tokenize aiNotes + categories of each connector, (2) compute keyword overlap with user goal input, (3) boost score for stack-match (if connector name or slug appears in user stack input), (4) filter by budget tier (free < freemium < paid, 'beliebig' means no filter), (5) return top matches grouped by pipeline stage - use categories to determine stage: 'trigger' category = TRIGGER stage, 'llm' or 'ai' or 'ml' category = LLM PROCESSOR, 'action' category = ACTION, remaining/general = MCP CONTEXT",
@@ -24,5 +24,5 @@
     "Run: cd /projects/sandbox/ANVIL-CLIENT && npm run lint"
   ],
   "blocked_reason": null,
-  "findings": ""
+  "findings": "Used satisfies Partial<IconMapping> instead of as IconMapping to fix type error when adding wand.and.stars mapping. Three connectors in source data were missing dead/lastChecked fields - added defaults. Used auto-fix-high MaterialIcon since auto-fix does not exist. The RAPIER repo only has 200 curated connectors with enriched data (aiNotes, categories array, tier). The larger zapier_apps.latest.json (9623) lacks these fields."
 }
