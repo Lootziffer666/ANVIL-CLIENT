@@ -35,14 +35,15 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'ANVIL',
-          tabBarLabel: 'Chat',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="message.fill" color={color} />,
+          tabBarLabel: 'Forge',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="hammer.fill" color={color} />,
         }}
       />
       <Tabs.Screen
         name="workspace"
         options={{
-          title: 'Workspace',
+          title: 'Anvil Workspace',
+          tabBarLabel: 'Workspace',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="folder.fill" color={color} />,
         }}
       />

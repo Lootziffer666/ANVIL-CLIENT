@@ -1,0 +1,7 @@
+{
+  "task_id": "task-ax8-anvil-branding-termux",
+  "task_description": "Rename OpenCode tabs to Anvil branding (Forge = where you code, Bellows = the fire/LLM) and add Termux/Shizuku support so the Bellows LiteLLM proxy can run locally on the Android phone for mobile coding on the go.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001"],
+  "blocked_reason": null
+}
