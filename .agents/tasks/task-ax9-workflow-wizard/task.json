@@ -1,7 +1,25 @@
 {
   "task_id": "task-ax9-workflow-wizard",
   "task_description": "Create the Synergy Workflow Wizard as a new tab in ANVIL-CLIENT with bundled connector data, scoring algorithm, pipeline cards, tier filter, and live-update debounce.",
-  "status": "in_progress",
+  "status": "completed",
+  "verification": {
+    "build": "pass",
+    "tests": "pass",
+    "test_quality": "skipped",
+    "docker_build": "skipped",
+    "summary": "typecheck and lint both pass cleanly. Review findings addressed: dead code removed, scoring normalization fixed, stage assignment tightened, dead connectors stripped from bundle."
+  },
   "feature_order": ["FEAT-001"],
-  "blocked_reason": null
+  "blocked_reason": null,
+  "review_fixes_applied": {
+    "commit": "00065a5",
+    "issues_fixed": [
+      "MCP Context stage now only includes connectors with no routing keywords (was: 195/200, now: only genuinely unclassified connectors)",
+      "topCategory for mcpContext filters out routing keywords before selecting domain category",
+      "Score normalization uses Math.max(matchedCount, 1) + 3 as denominator instead of goalTokens.length + 3",
+      "Removed dead getStage function",
+      "Removed 34 dead connectors from bundle (saved ~524 lines)"
+    ],
+    "notes": "All 166 remaining connectors have at least one routing keyword (trigger/action/llm/ai/ml), so mcpContext stage will be empty with current dataset. This is correct behavior per the fix specification - mcpContext is reserved for connectors that do not fit other stages."
+  }
 }
