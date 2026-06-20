@@ -11,6 +11,7 @@ import {
 
 import { Colors } from '@/constants/theme';
 import { BellowsSection } from '@/components/settings/bellows-section';
+import { TermuxSection } from '@/components/settings/termux-section';
 import { ProviderConfigDialog } from '@/components/settings/provider-config-dialog';
 import {
   AiDefaultsSection,
@@ -388,6 +389,7 @@ export default function SettingsScreen() {
           palette={palette}
           updateSettings={updateSettings}
         />
+        <TermuxSection palette={palette} />
         <AiDefaultsSection
           availableModels={availableModels}
           availableProviders={availableProviders}

@@ -1,0 +1,29 @@
+{
+  "project_type": "Expo 54 / React Native 0.81 mobile app (TypeScript)",
+  "language": "TypeScript / React Native",
+  "build_system": "Expo CLI + npm scripts. Android builds via Gradle. No Docker.",
+  "test_framework": "Static: ESLint + TypeScript. E2E: Playwright against a fake OpenCode server. No unit test suite.",
+  "build_command": "npm run lint && npm run typecheck",
+  "test_command": "npm run typecheck",
+  "verification_instructions": "1. npm run lint  2. npm run typecheck  3. Verify tab labels in _layout.tsx are renamed correctly",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "npm install (node_modules already present)",
+  "environment_constraints": "No Android emulator or Termux available in sandbox. Validation is limited to static checks (lint, typecheck). expo-intent-launcher and expo-linking already in dependencies.",
+  "contribution_requirements": "Follow AGENTS.md layer rules: providers own domain state, lib owns platform helpers, components own UI, app owns thin routing. New platform integration helpers go in lib/.",
+  "key_patterns": "Settings sections are extracted components in components/settings/. Bellows client in lib/bellows/client.ts. Provider state in providers/. Tab layout in app/(tabs)/_layout.tsx. Colors in constants/theme.ts.",
+  "relevant_files": [
+    "app/(tabs)/_layout.tsx",
+    "app/(tabs)/index.tsx",
+    "app/(tabs)/workspace.tsx",
+    "app/(tabs)/bellows-chat.tsx",
+    "app/(tabs)/settings.tsx",
+    "components/settings/bellows-section.tsx",
+    "components/settings/settings-sections.tsx",
+    "lib/bellows/client.ts",
+    "providers/bellows-chat-provider.tsx",
+    "constants/theme.ts",
+    "lib/storage-keys.ts",
+    "providers/opencode-provider.tsx"
+  ],
+  "directory_structure": "app/(tabs)/ - tab screens and layout. components/ - UI components. lib/ - protocol/platform helpers. providers/ - state providers. constants/ - theme/config. tests/ - e2e and fake server."
+}
