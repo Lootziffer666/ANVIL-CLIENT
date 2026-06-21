@@ -8,6 +8,10 @@ export interface Connector {
   tier: 'free' | 'freemium' | 'paid';
   dead: boolean;
   lastChecked: string;
+  pricingTiers?: { name: string; price: string; limits?: string }[];
+  rateLimits?: string;
+  apiAccess?: boolean;
+  freeTierNotes?: string;
 }
 
 export const CONNECTORS: Connector[] = 
@@ -26,7 +30,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "outlook",
@@ -42,7 +47,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "sendgrid",
@@ -57,7 +63,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "mailgun",
@@ -72,7 +79,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "brevo",
@@ -88,7 +96,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "postmark",
@@ -102,7 +111,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "slack",
@@ -118,7 +128,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "discord",
@@ -134,7 +145,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "telegram",
@@ -150,7 +162,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "teams",
@@ -167,7 +180,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "mattermost",
@@ -183,7 +197,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "twilio-sms",
@@ -199,7 +214,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "pushover",
@@ -214,7 +230,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "google-sheets",
@@ -231,7 +248,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "airtable",
@@ -247,7 +265,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "notion",
@@ -263,7 +282,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "coda",
@@ -279,7 +299,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "mysql",
@@ -294,7 +315,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "postgresql",
@@ -309,7 +331,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "firebase-firestore",
@@ -325,7 +348,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "nocodb",
@@ -341,7 +365,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "baserow",
@@ -357,7 +382,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "smartsheet",
@@ -373,7 +399,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "openai",
@@ -389,7 +416,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "groq",
@@ -405,7 +433,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "cohere",
@@ -420,7 +449,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "hugging-face",
@@ -435,7 +465,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "replicate",
@@ -452,7 +483,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "perplexity",
@@ -467,7 +499,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "mistral",
@@ -482,7 +515,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "together-ai",
@@ -497,7 +531,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "elevenlabs",
@@ -513,7 +548,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "deepgram",
@@ -529,7 +565,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "assemblyai",
@@ -545,7 +582,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "pinecone",
@@ -561,7 +599,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "weaviate",
@@ -577,7 +616,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "qdrant",
@@ -593,7 +633,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "chroma",
@@ -609,7 +650,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "milvus",
@@ -625,7 +667,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "github-app",
@@ -640,7 +683,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "gitlab",
@@ -655,7 +699,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "linear",
@@ -671,7 +716,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "jira",
@@ -687,7 +733,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "datadog",
@@ -703,7 +750,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "pagerduty",
@@ -718,7 +766,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "vercel",
@@ -734,7 +783,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "netlify",
@@ -750,7 +800,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "railway",
@@ -765,7 +816,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "dropbox",
@@ -781,7 +833,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "google-drive",
@@ -797,7 +850,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "box",
@@ -813,7 +867,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "aws-s3",
@@ -829,7 +884,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "cloudflare-r2",
@@ -844,7 +900,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "twitter",
@@ -859,7 +916,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "linkedin",
@@ -874,7 +932,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "facebook",
@@ -889,7 +948,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "youtube",
@@ -905,7 +965,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "reddit",
@@ -920,7 +981,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "bluesky",
@@ -935,7 +997,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "typeform",
@@ -949,7 +1012,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "google-forms",
@@ -964,7 +1028,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "jotform",
@@ -978,7 +1043,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "tally",
@@ -992,7 +1058,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "fillout",
@@ -1006,7 +1073,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "surveymonkey",
@@ -1021,7 +1089,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "mailchimp",
@@ -1037,7 +1106,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "activecampaign",
@@ -1054,7 +1124,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "convertkit",
@@ -1070,7 +1141,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "klaviyo",
@@ -1087,7 +1159,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "beehiiv",
@@ -1103,7 +1176,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "apollo",
@@ -1119,7 +1193,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "hunter",
@@ -1134,7 +1209,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "trello",
@@ -1149,7 +1225,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "monday",
@@ -1164,7 +1241,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "clickup",
@@ -1179,7 +1257,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "asana",
@@ -1194,7 +1273,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "todoist",
@@ -1209,7 +1289,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "wrike",
@@ -1224,7 +1305,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "plane",
@@ -1240,7 +1322,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "google-analytics",
@@ -1256,7 +1339,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "mixpanel",
@@ -1271,7 +1355,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "amplitude",
@@ -1286,7 +1371,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "posthog",
@@ -1301,7 +1387,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "segment",
@@ -1316,7 +1403,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "plausible",
@@ -1330,7 +1418,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "salesforce",
@@ -1345,7 +1434,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "hubspot",
@@ -1361,7 +1451,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "pipedrive",
@@ -1376,7 +1467,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "zoho-crm",
@@ -1391,7 +1483,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "close",
@@ -1406,7 +1499,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "attio",
@@ -1421,7 +1515,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "shopify",
@@ -1436,7 +1531,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "woocommerce",
@@ -1451,7 +1547,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "stripe",
@@ -1466,7 +1563,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "paypal",
@@ -1481,7 +1579,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "square",
@@ -1497,7 +1596,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "gumroad",
@@ -1513,7 +1613,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "lemon-squeezy",
@@ -1528,7 +1629,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "zendesk",
@@ -1543,7 +1645,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "intercom",
@@ -1559,7 +1662,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "freshdesk",
@@ -1574,7 +1678,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "crisp",
@@ -1590,7 +1695,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "zoom",
@@ -1605,7 +1711,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "calendly",
@@ -1619,7 +1726,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "calcom",
@@ -1633,7 +1741,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "google-calendar",
@@ -1649,7 +1758,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "outlook-calendar",
@@ -1665,7 +1775,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "webhook",
@@ -1680,7 +1791,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "rss",
@@ -1694,7 +1806,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "zapier",
@@ -1709,7 +1822,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "n8n",
@@ -1725,7 +1839,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "make",
@@ -1740,7 +1855,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "pipedream",
@@ -1756,7 +1872,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "activepieces",
@@ -1772,7 +1889,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "google-docs",
@@ -1787,7 +1905,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "confluence",
@@ -1802,7 +1921,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "dropbox-paper",
@@ -1817,7 +1937,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "algolia",
@@ -1831,7 +1952,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "typesense",
@@ -1845,7 +1967,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "meilisearch",
@@ -1859,7 +1982,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "better-uptime",
@@ -1873,7 +1997,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "grafana",
@@ -1889,7 +2014,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "bamboohr",
@@ -1904,7 +2030,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "gusto",
@@ -1919,7 +2046,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "home-assistant",
@@ -1934,7 +2062,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "mqtt",
@@ -1949,7 +2078,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "twitch",
@@ -1964,7 +2094,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "spotify",
@@ -1980,7 +2111,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "twilio-voice",
@@ -1995,7 +2127,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "freemium",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "oracle-netsuite",
@@ -2010,7 +2143,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "dynamics365",
@@ -2026,7 +2160,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "quickbooks",
@@ -2041,7 +2176,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "xero",
@@ -2057,7 +2193,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "chargebee",
@@ -2073,7 +2210,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "helpscout",
@@ -2089,7 +2227,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "google-meet",
@@ -2105,7 +2244,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "microsoft-teams",
@@ -2122,7 +2262,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "copper",
@@ -2138,7 +2279,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "acuity-scheduling",
@@ -2154,7 +2296,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "bigcommerce",
@@ -2169,7 +2312,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "aws-lambda",
@@ -2184,7 +2328,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "firebase",
@@ -2200,7 +2345,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "airbyte",
@@ -2215,7 +2361,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "docusign",
@@ -2231,7 +2378,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "pandadoc",
@@ -2247,7 +2395,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "workday",
@@ -2262,7 +2411,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "greenhouse",
@@ -2278,7 +2428,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "delighted",
@@ -2294,7 +2445,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "webflow",
@@ -2310,7 +2462,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "wordpress",
@@ -2326,7 +2479,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "ghost",
@@ -2342,7 +2496,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "contentful",
@@ -2358,7 +2513,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "strapi",
@@ -2373,7 +2529,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "affinity",
@@ -2388,7 +2545,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "gong",
@@ -2403,7 +2561,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "lemlist",
@@ -2419,7 +2578,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "outreach",
@@ -2435,7 +2595,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "tableau",
@@ -2450,7 +2611,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "paid",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "looker-studio",
@@ -2466,7 +2628,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "metabase",
@@ -2482,7 +2645,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "retool",
@@ -2497,7 +2661,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "appsmith",
@@ -2512,7 +2677,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "bubble",
@@ -2528,7 +2694,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": true,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "xata",
@@ -2544,7 +2711,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "turso",
@@ -2559,7 +2727,8 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   },
   {
     "slug": "liveblocks",
@@ -2575,6 +2744,7 @@ export const CONNECTORS: Connector[] =
     "isZapier": false,
     "tier": "free",
     "dead": false,
-    "lastChecked": "2026-06-15T09:30:47Z"
+    "lastChecked": "2026-06-15T09:30:47Z",
+    "pricingTiers": []
   }
 ];

@@ -1,0 +1,7 @@
+{
+  "task_id": "task-wizard-pricing-awareness",
+  "task_description": "Extend the Synergy Workflow Wizard with pricing awareness: add pricing fields to Connector type, extend scoring with budget filtering, add budget UI to wizard, and create a data loader layer for future dynamic connector loading.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001"],
+  "blocked_reason": null
+}

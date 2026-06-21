@@ -1,0 +1,29 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Add pricing fields to Connector type, update all 166 connectors with placeholder values, extend scoring with maxMonthlyCost parameter and apiAccess bonus, create load-connectors.ts data layer, update wizard UI with budget input and pricing display",
+  "status": "in_progress",
+  "steps": [
+    "1. In lib/wizard/connectors.ts: Extend the Connector interface with 4 new optional fields: pricingTiers?: { name: string; price: string; limits?: string }[], rateLimits?: string, apiAccess?: boolean, freeTierNotes?: string",
+    "2. In lib/wizard/connectors.ts: Add placeholder values to ALL 166 connector objects: pricingTiers: [], rateLimits: undefined, apiAccess: undefined, freeTierNotes: undefined. Since undefined fields are omitted in JSON, just add pricingTiers: [] to each entry.",
+    "3. Create lib/wizard/load-connectors.ts: Export a loadConnectors() function that currently returns the hardcoded CONNECTORS array. Include AsyncStorage import and scaffolding for future dynamic loading with a fallback to hardcoded. Add comment: '// TODO: Replace with dynamic load from RAPIER DB export'",
+    "4. In lib/wizard/scoring.ts: Add a new parameter maxMonthlyCost (number | null) to computePipeline function signature. When maxMonthlyCost is set: filter out connectors that have no free tier (tier !== 'free') AND whose cheapest pricingTiers entry price exceeds the budget. Add +1 score bonus for connectors where apiAccess === true. Update the import to use loadConnectors instead of directly importing CONNECTORS.",
+    "5. In app/(tabs)/wizard.tsx: Add a new optional numeric input field 'Max. Budget/Monat' (below the tier selector). Pass this value to computePipeline as the maxMonthlyCost parameter. Extend StageCard to show pricingTiers[0].price and rateLimits underneath the score (in muted color). Add an 'Estimated Cost' summary row at the bottom of the pipeline section showing the sum of cheapest tiers across all 4 stages. Update import from lib/wizard/scoring to use the new signature. Use loadConnectors from lib/wizard/load-connectors.ts instead of direct CONNECTORS import."
+  ],
+  "acceptance_criteria": [
+    "npm run typecheck passes with zero errors",
+    "npm run lint passes with zero errors",
+    "The Connector interface in connectors.ts has the 4 new optional fields",
+    "All 166 connector entries include pricingTiers: []",
+    "lib/wizard/load-connectors.ts exists and exports loadConnectors()",
+    "computePipeline accepts a 4th parameter maxMonthlyCost: number | null",
+    "Wizard UI has a budget input field and displays pricing info on cards",
+    "The wizard imports from load-connectors.ts instead of directly from connectors.ts"
+  ],
+  "verification": [
+    "Run: cd /projects/sandbox/ANVIL-CLIENT && npm run typecheck",
+    "Run: cd /projects/sandbox/ANVIL-CLIENT && npm run lint"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

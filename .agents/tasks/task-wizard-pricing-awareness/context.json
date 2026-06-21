@@ -1,0 +1,22 @@
+{
+  "project_type": "Expo React Native mobile app with TypeScript",
+  "language": "TypeScript / React Native",
+  "build_system": "npm + expo, no native build tooling required for this task",
+  "test_framework": "Playwright E2E + fake server, no unit tests. CI gates: lint, typecheck, fake-server self-test, Playwright flows, Android build",
+  "build_command": "npm run typecheck",
+  "test_command": "npm run lint && npm run typecheck",
+  "verification_instructions": "1. Run npm run typecheck to confirm no TS errors. 2. Run npm run lint to confirm no lint errors.",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "cd /projects/sandbox/ANVIL-CLIENT && npm install",
+  "environment_constraints": "No native build available (no Android Studio / Xcode). Playwright E2E requires expo web build + serve. TypeScript typecheck and lint are the primary CI-static checks.",
+  "contribution_requirements": "Push directly to main after validation. Branch name: gate/ax10-wizard-pricing.",
+  "key_patterns": "Wizard lives in app/(tabs)/wizard.tsx. Scoring logic in lib/wizard/scoring.ts imports CONNECTORS from lib/wizard/connectors.ts. Uses react-native-paper for UI components (TextInput, Card, Chip, SegmentedButtons, Surface, Text). Colors from @/constants/theme. Path alias @/ maps to project root.",
+  "relevant_files": [
+    "lib/wizard/connectors.ts",
+    "lib/wizard/scoring.ts",
+    "app/(tabs)/wizard.tsx",
+    "lib/wizard/load-connectors.ts",
+    "constants/theme.ts"
+  ],
+  "directory_structure": "app/(tabs)/ - tab screens including wizard.tsx; lib/wizard/ - scoring logic and connector data; constants/ - theme colors; components/ - shared UI components"
+}

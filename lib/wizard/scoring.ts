@@ -1,4 +1,5 @@
-import { CONNECTORS, type Connector } from './connectors';
+import { type Connector } from './connectors';
+import { getConnectorsSync } from './load-connectors';
 
 export type PipelineStage = 'trigger' | 'llmProcessor' | 'action' | 'mcpContext';
 
@@ -45,10 +46,31 @@ function getStages(categories: string[]): PipelineStage[] {
   return stages;
 }
 
+/**
+ * Extracts a numeric monthly price from a pricing tier price string like "$9/mo" or "9".
+ * Returns the cheapest numeric value found, or null if none could be parsed.
+ */
+function parseCheapestPrice(
+  tiers: { name: string; price: string; limits?: string }[],
+): number | null {
+  let cheapest: number | null = null;
+  for (const t of tiers) {
+    const match = t.price.match(/[\d]+(?:[.,]\d+)?/);
+    if (match) {
+      const value = parseFloat(match[0].replace(',', '.'));
+      if (!isNaN(value) && (cheapest == null || value < cheapest)) {
+        cheapest = value;
+      }
+    }
+  }
+  return cheapest;
+}
+
 export function computePipeline(
   stack: string,
   goal: string,
   tier: 'free' | 'freemium' | 'paid' | 'beliebig',
+  maxMonthlyCost: number | null = null,
 ): PipelineResult {
   const goalTokens = tokenize(goal);
   const stackTokens = tokenize(stack);
@@ -64,12 +86,32 @@ export function computePipeline(
     return stageScores;
   }
 
-  for (const connector of CONNECTORS) {
+  // Allow a 10% tolerance over budget so slightly pricier but better-fitting connectors
+  // still get suggested (e.g. 33 EUR passes when budget is 30 EUR).
+  const budgetThreshold =
+    maxMonthlyCost != null ? maxMonthlyCost * 1.1 : null;
+
+  const connectors = getConnectorsSync();
+
+  for (const connector of connectors) {
     if (connector.dead) continue;
 
     // Tier filter
     if (tier !== 'beliebig') {
       if (TIER_RANK[connector.tier] > TIER_RANK[tier]) continue;
+    }
+
+    // Budget filter: skip connectors that are provably over budget
+    if (budgetThreshold != null) {
+      if (connector.tier !== 'free') {
+        const tiers = connector.pricingTiers ?? [];
+        if (tiers.length > 0) {
+          const cheapest = parseCheapestPrice(tiers);
+          if (cheapest != null && cheapest > budgetThreshold) {
+            continue;
+          }
+        }
+      }
     }
 
     // Build searchable tokens from aiNotes and categories
@@ -94,6 +136,11 @@ export function computePipeline(
         score += 3;
         break;
       }
+    }
+
+    // API access bonus: services with documented API get a slight boost
+    if (connector.apiAccess === true) {
+      score += 1;
     }
 
     if (score === 0) continue;

@@ -4,6 +4,7 @@ import { Card, Chip, SegmentedButtons, Surface, Text, TextInput } from 'react-na
 
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import { loadConnectors } from '@/lib/wizard/load-connectors';
 import { computePipeline, type PipelineResult, type ScoredConnector } from '@/lib/wizard/scoring';
 
 type TierOption = 'free' | 'freemium' | 'paid' | 'beliebig';
@@ -68,6 +69,20 @@ function StageCard({
                 </Chip>
                 <TierBadge tier={result.connector.tier} palette={palette} />
               </View>
+              {(result.connector.pricingTiers?.[0]?.price || result.connector.rateLimits) && (
+                <View style={styles.pricingRow}>
+                  {result.connector.pricingTiers?.[0]?.price ? (
+                    <Text variant="bodySmall" style={{ color: palette.muted }}>
+                      {result.connector.pricingTiers[0].price}
+                    </Text>
+                  ) : null}
+                  {result.connector.rateLimits ? (
+                    <Text variant="bodySmall" style={{ color: palette.muted }}>
+                      {result.connector.rateLimits}
+                    </Text>
+                  ) : null}
+                </View>
+              )}
             </View>
           ) : (
             <Text variant="bodySmall" style={{ color: palette.muted }}>
@@ -92,6 +107,7 @@ export default function WizardScreen() {
   const [stack, setStack] = useState('');
   const [goal, setGoal] = useState('');
   const [tier, setTier] = useState<TierOption>('beliebig');
+  const [budgetText, setBudgetText] = useState('');
   const [pipeline, setPipeline] = useState<PipelineResult>({
     trigger: null,
     llmProcessor: null,
@@ -101,10 +117,18 @@ export default function WizardScreen() {
 
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Preload connectors on mount (prepares AsyncStorage path for future use)
+  useEffect(() => {
+    void loadConnectors();
+  }, []);
+
+  const maxMonthlyCost: number | null =
+    budgetText.trim() !== '' && !isNaN(Number(budgetText)) ? Number(budgetText) : null;
+
   const runScoring = useCallback(() => {
-    const result = computePipeline(stack, goal, tier);
+    const result = computePipeline(stack, goal, tier, maxMonthlyCost);
     setPipeline(result);
-  }, [stack, goal, tier]);
+  }, [stack, goal, tier, maxMonthlyCost]);
 
   useEffect(() => {
     if (debounceRef.current) {
@@ -119,6 +143,25 @@ export default function WizardScreen() {
       }
     };
   }, [runScoring]);
+
+  // Compute estimated cost: sum of cheapest pricing tier from each stage that has a result
+  const estimatedCost = STAGE_ORDER.reduce((sum, stage) => {
+    const result = pipeline[stage];
+    if (!result) return sum;
+    const tiers = result.connector.pricingTiers ?? [];
+    if (tiers.length === 0) return sum;
+    let cheapest: number | null = null;
+    for (const t of tiers) {
+      const match = t.price.match(/[\d]+(?:[.,]\d+)?/);
+      if (match) {
+        const value = parseFloat(match[0].replace(',', '.'));
+        if (!isNaN(value) && (cheapest == null || value < cheapest)) {
+          cheapest = value;
+        }
+      }
+    }
+    return sum + (cheapest ?? 0);
+  }, 0);
 
   return (
     <ScrollView
@@ -162,6 +205,15 @@ export default function WizardScreen() {
             buttons={TIER_BUTTONS}
             style={styles.segmented}
           />
+          <TextInput
+            label="Max. Budget/Monat"
+            placeholder="z.B. 0, 10, 50 (leer = kein Limit)"
+            value={budgetText}
+            onChangeText={setBudgetText}
+            mode="outlined"
+            keyboardType="numeric"
+            style={styles.input}
+          />
         </Card.Content>
       </Card>
 
@@ -178,6 +230,16 @@ export default function WizardScreen() {
             isLast={index === STAGE_ORDER.length - 1}
           />
         ))}
+        {estimatedCost > 0 && (
+          <Surface style={[styles.costSummary, { backgroundColor: palette.surface }]} elevation={1}>
+            <Text variant="labelLarge" style={{ color: palette.text }}>
+              Estimated Cost
+            </Text>
+            <Text variant="titleMedium" style={{ color: palette.tint, fontWeight: '700' }}>
+              ~${estimatedCost}/mo
+            </Text>
+          </Surface>
+        )}
       </View>
     </ScrollView>
   );
@@ -200,4 +262,13 @@ const styles = StyleSheet.create({
   categoryChip: { alignSelf: 'flex-start' },
   tierBadge: { fontSize: 11, fontWeight: '700' },
   arrowContainer: { alignItems: 'center', paddingVertical: 4 },
+  pricingRow: { flexDirection: 'row', gap: 12, marginTop: 2 },
+  costSummary: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 12,
+    borderRadius: 12,
+    marginTop: 8,
+  },
 });
