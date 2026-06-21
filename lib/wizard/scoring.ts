@@ -50,7 +50,7 @@ function getStages(categories: string[]): PipelineStage[] {
  * Extracts a numeric monthly price from a pricing tier price string like "$9/mo" or "9".
  * Returns the cheapest numeric value found, or null if none could be parsed.
  */
-function parseCheapestPrice(
+export function parseCheapestPrice(
   tiers: { name: string; price: string; limits?: string }[],
 ): number | null {
   let cheapest: number | null = null;

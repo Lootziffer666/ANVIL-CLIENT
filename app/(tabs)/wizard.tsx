@@ -5,7 +5,7 @@ import { Card, Chip, SegmentedButtons, Surface, Text, TextInput } from 'react-na
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { loadConnectors } from '@/lib/wizard/load-connectors';
-import { computePipeline, type PipelineResult, type ScoredConnector } from '@/lib/wizard/scoring';
+import { computePipeline, parseCheapestPrice, type PipelineResult, type ScoredConnector } from '@/lib/wizard/scoring';
 
 type TierOption = 'free' | 'freemium' | 'paid' | 'beliebig';
 
@@ -150,16 +150,7 @@ export default function WizardScreen() {
     if (!result) return sum;
     const tiers = result.connector.pricingTiers ?? [];
     if (tiers.length === 0) return sum;
-    let cheapest: number | null = null;
-    for (const t of tiers) {
-      const match = t.price.match(/[\d]+(?:[.,]\d+)?/);
-      if (match) {
-        const value = parseFloat(match[0].replace(',', '.'));
-        if (!isNaN(value) && (cheapest == null || value < cheapest)) {
-          cheapest = value;
-        }
-      }
-    }
+    const cheapest = parseCheapestPrice(tiers);
     return sum + (cheapest ?? 0);
   }, 0);
 
