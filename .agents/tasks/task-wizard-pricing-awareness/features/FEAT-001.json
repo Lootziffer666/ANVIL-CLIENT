@@ -2,7 +2,7 @@
   "id": "FEAT-001",
   "type": "feat",
   "description": "Add pricing fields to Connector type, update all 166 connectors with placeholder values, extend scoring with maxMonthlyCost parameter and apiAccess bonus, create load-connectors.ts data layer, update wizard UI with budget input and pricing display",
-  "status": "in_progress",
+  "status": "completed",
   "steps": [
     "1. In lib/wizard/connectors.ts: Extend the Connector interface with 4 new optional fields: pricingTiers?: { name: string; price: string; limits?: string }[], rateLimits?: string, apiAccess?: boolean, freeTierNotes?: string",
     "2. In lib/wizard/connectors.ts: Add placeholder values to ALL 166 connector objects: pricingTiers: [], rateLimits: undefined, apiAccess: undefined, freeTierNotes: undefined. Since undefined fields are omitted in JSON, just add pricingTiers: [] to each entry.",
@@ -25,5 +25,5 @@
     "Run: cd /projects/sandbox/ANVIL-CLIENT && npm run lint"
   ],
   "blocked_reason": null,
-  "findings": ""
+  "findings": "Implemented 10% budget tolerance per user steering (e.g. 33 EUR passes when budget is 30 EUR). The data loader (load-connectors.ts) uses AsyncStorage with hardcoded fallback - the pricingTiers are currently [] placeholders on all 166 entries, to be populated later from RAPIER DB export. The wizard preloads connectors via loadConnectors() on mount but uses getConnectorsSync() for scoring to avoid async complexity in the render loop."
 }
